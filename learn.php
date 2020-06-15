@@ -179,7 +179,7 @@
         //不改继续学习
         else {
             $recentbook = $_SESSION["recentbook"];
-            $_SESSION['showtranslation']='';
+            //$_SESSION['showtranslation']='';
             $sql = "SELECT Recentword from User where Username='" . $username . "'";
             $result = $mySQLi->query($sql);
             if ($result->num_rows > 0) {
