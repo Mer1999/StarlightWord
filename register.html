@@ -1,0 +1,91 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Starlight单词-注册</title>
+    <style>
+        html {
+            background-color: #F0F8FF;
+        }
+
+        fieldset {
+            width: 450px;
+            background: #ffffff;
+            height: 300px;
+            margin: 200px auto;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #000000;
+            text-align: center;
+            letter-spacing: 8px;
+            text-indent: 8px;
+        }
+
+        label {
+            color: #000000;
+            float: left;
+            width: 100px;
+            line-height: 25px;
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 250px;
+            border: 1px solid #000000;
+            float: right;
+            margin-right: 30px;
+            margin-top: 10px;
+            height: 23px;
+        }
+
+        br {
+            clear: left;
+        }
+
+       .button {
+            display: block;
+            height: 60px;
+            width: 100px;
+            margin-top: 20px;
+            background-color: #FFFFFF;
+            font-size: 18px;
+            letter-spacing: 8px;
+            text-indent: 8px;
+            border-radius: 10px;
+        }
+
+        #submit {
+            margin-right: 70px;
+            float: right;
+        }
+
+        #reset {
+            margin-left: 70px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="register.php" method="post">
+        <fieldset>
+            <h1>注册新用户</h1>
+
+            <label>用户名:</label>
+            <input type='text' name='username' size='12' maxlength='50'><br />
+            <label>用户密码:</label>
+            <input type='password' name='passwd' size='50'><br />
+            <label>重复密码:</label>
+            <input type='password' name='repasswd' size='50'><br />
+
+            <input type='submit' name='submit' id='submit' class='button' value='提交'>
+            <input type='reset' name='submit2' id='reset' class='button' value='清空'>
+
+        </fieldset>
+    </form>
+</body>
+
+</html>

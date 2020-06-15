@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Starlight单词-登录</title>
+    <style>
+        html {
+            background-color: #F0F8FF;
+        }
+
+        fieldset {
+            width: 450px;
+            background: #ffffff;
+            height: 300px;
+            margin: 200px auto;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #000000;
+            text-align: center;
+            letter-spacing:10px;
+            text-indent:10px;
+            display: block;
+        }
+
+        label {
+            color: #000000;
+            float: left;
+            width: 100px;
+            line-height: 24px;
+            font-size: 18px;
+            margin-left: 20px;
+        }
+
+        #label_password {
+            margin-top: 20px;
+        }
+
+        input {
+            width: 250px;
+            border: 1px solid #000000;
+            height: 20px;
+        }
+
+        #password {
+            margin-top: 20px;
+        }
+
+        br {
+            clear: left;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:link {
+            color: #000000;
+        }
+
+        a:hover {
+            color: #ee2c2c;
+        }
+
+        #sbutton {
+            display: block;
+            height: 50px;
+            width: 120px;
+            margin: 40px 165px 0px 165px;
+            font-size: 20px;
+            letter-spacing:8px;
+            text-indent:8px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+        }
+
+        a[href] {
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="login.php" name='login' method="post">
+        <fieldset>
+            <h1>登录</h1>
+            <label for="username" id='label_username'>用户名:</label>
+            <input id="username" name="username" type="text" /><br />
+            <label for="password" id='label_password'>密码:</label>
+            <input id="password" name="password" type="password" /><br />
+            <input name="submit" id="sbutton" type="submit" value="登录"><br />
+            <a href="register.html">新用户注册</a>
+        </fieldset>
+    </form>
+</body>
+
+</html>
