@@ -4,7 +4,7 @@ $recentword=$_SESSION['recentword'];
 $_SESSION['showtranslation'] = '';
 $username=$_SESSION['username'];
 //连接数据库
-$mySQLi = new MySQLi('localhost', 'root', '123456', 'Merword');
+$mySQLi = new MySQLi('localhost', 'root', '123456', 'StarlightWord');
 //判断数据库是否连接
 if ($mySQLi->connect_errno) {
     die('数据库连接错误' . $mySQLi->connect_error);

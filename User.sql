@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `Merword`;
-USE `Merword`;
+CREATE DATABASE IF NOT EXISTS `StarlightWord`;
+USE `StarlightWord`;
 DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
   `Userid` int NOT NULL AUTO_INCREMENT,

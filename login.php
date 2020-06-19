@@ -14,7 +14,7 @@
     }
 
     //使用面向对象进行数据库的连接，在创建对象的时候就自动的连接数据
-    $mySQLi = new MySQLi('localhost', 'root', '123456', 'Merword');
+    $mySQLi = new MySQLi('localhost', 'root', '123456', 'StarlightWord');
 
     //判断数据库是否连接
     if ($mySQLi->connect_errno) {

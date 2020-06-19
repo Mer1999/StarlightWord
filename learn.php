@@ -17,7 +17,7 @@
             float: left;
             margin-left: 30px;
             margin-top: 10px;
-            font-size: 18px;
+            font-size: 20px;
         }
 
         #span_index,
@@ -27,10 +27,6 @@
             margin-right: 30px;
             margin-top: 10px;
             font-size: 18px;
-        }
-
-        #span_title {
-            font-size: 20px;
         }
 
         a:link {
@@ -65,7 +61,8 @@
         }
 
         #span_type,
-        #span_translation {
+        #span_translation,
+        #span_soundmark {
             text-align: center;
             display: block;
             margin-top: 10px;
@@ -122,14 +119,33 @@
 
         .p_insertnotebook {
             text-align: center;
-            font-size:20px;
+            font-size: 20px;
         }
     </style>
+
+    <!--js控制单词发音函数-->
+    <script>
+        window.onload = function() {
+            var audio = document.getElementById('pronounce');
+            audio.pause(); //打开页面时无音乐
+        }
+
+        function play() {
+            var audio = document.getElementById('pronounce');
+            if (audio.paused) {
+                audio.play();
+            }
+        }
+    </script>
 </head>
 
 <body>
     <div id="top">
-        <span id="span_title">学习页面</span>
+        <span id="span_title">学习页面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前用户:
+            <?php
+            session_start();
+            echo $_SESSION["username"];
+            ?></span>
         <span id="span_logout"><a href='logout.php' id='logout'>登出</a></span>
         <span id="span_index"><a href='index.php' id='index'>回到主页</a></span>
         <span id="span_notebook"><a href='vocanotebook.php' id='notebook'>生词本</a></span>
@@ -141,7 +157,7 @@
     $username = $_SESSION["username"];
 
     //连接数据库
-    $mySQLi = new MySQLi('localhost', 'root', '123456', 'Merword');
+    $mySQLi = new MySQLi('localhost', 'root', '123456', 'StarlightWord');
     //判断数据库是否连接
     if ($mySQLi->connect_errno) {
         die('数据库连接错误' . $mySQLi->connect_error);
@@ -167,7 +183,7 @@
         if ($_POST["changebook"] != NULL) {
             $recentbook = $_POST["changebook"];
             $_SESSION["recentbook"] = $recentbook;
-            $_SESSION["showtranslation"]='';
+            $_SESSION["showtranslation"] = '';
 
             //将当前用户学习单词书更新
             $sql = "UPDATE User SET Recentbook='" . $recentbook . "' WHERE Username='" . $username . "'";
@@ -210,13 +226,14 @@
     //echo $recentword;
 
     //获取当前应学单词
-    $sql = "select Word, Type, Translation from " . $recentbook . " where Wordid='" . $recentword . "'";
+    $sql = "select Word, Type, Translation, Soundmark from " . $recentbook . " where Wordid='" . $recentword . "'";
     $result = $mySQLi->query($sql);
     if ($result->num_rows > 0) {
         $res = $result->fetch_array();
         $Word = $res["Word"];
         $Type = $res["Type"];
         $Translation = $res["Translation"];
+        $Soundmark = $res["Soundmark"];
     }
 
     //若已经没有返回值则说明已经学完，强制返回主页
@@ -230,12 +247,21 @@
                 <span id='span_word'>" . $Word . "</span>
                 <br/>
         ";
+
+
     ?>
     <form id='form_showtranslation' name='form_showtranslation' action='' method='POST'>
         <input id='btn_showtranslation' type='submit' name='submit_showtranslation' value='显示释义'>
         <input name="showtranslation" type="hidden" id="showtranslation" value="showtranslation">
     </form>
+    <?php
+    echo "
+    <audio id='pronounce' src='/pronounce/" . $Word . "--_gb_1.mp3'></audio>
+    ";
+    ?>
+
     </div>
+
     <?php
     $_SESSION['recentword'] = $recentword;
     //权宜之计
@@ -243,10 +269,16 @@
     if ($_SESSION['showtranslation'] == 'showtranslation' || $_POST['showtranslation'] == 'showtranslation') {
         if ($_POST['showtranslation'] == 'showtranslation') {
             $_SESSION['showtranslation'] = $_POST['showtranslation'];
-        } ?>
-
+        }
+    ?>
         <div id='div_translation'>
-            <span id='span_type'> <?php echo $Type ?> </span>
+
+            <span id='span_soundmark'>
+                <?php echo $Soundmark; ?>
+                <img src="/image/pronounce.png" width="23px" onclick="play()" alt="pronounce.png">
+            </span>
+            <br />
+            <span id='span_type'> <?php echo $Type; ?> </span>
             <br />
             <span id='span_translation'><?php echo $Translation ?> </span>
             <br />
@@ -313,7 +345,7 @@
     //将词汇插入生词本-Notebook表
     if ($insertnotebook == 'insertnotebook') {
         //查看生词本中是否存在此单词
-        $sql = "select Wordid from ".$username." where Word='" . $Word . "'";
+        $sql = "select Wordid from " . $username . " where Word='" . $Word . "'";
         $result = $mySQLi->query($sql);
         //已存在
         if ($result->num_rows > 0) {
@@ -321,7 +353,7 @@
             echo "<p class='p_insertnotebook'>生词本中该单词已存在！<p>";
         } else {
             //不存在则插入
-            $sql = "INSERT INTO ".$username."(Word,Type,Translation) VALUES ('" . $Word . "', '" . $Type . "','" . $Translation . "')";
+            $sql = "INSERT INTO " . $username . "(Word,Type,Translation,Soundmark) VALUES ('" . $Word . "', '" . $Type . "','" . $Translation . "','" . $Soundmark . "')";
             $result = $mySQLi->query($sql);
             //$_SESSION['showtranslation'] = '';
             echo "<p class='p_insertnotebook'>加入生词本成功~<p>";

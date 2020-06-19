@@ -18,7 +18,7 @@
         exit;
     }
 
-    $mySQLi = new MySQLi('localhost', 'root', '123456', 'Merword');
+    $mySQLi = new MySQLi('localhost', 'root', '123456', 'StarlightWord');
     //判断数据库是否连接
     if ($mySQLi->connect_errno) {
         die('数据库连接错误' . $mySQLi->connect_error);
@@ -41,7 +41,7 @@
     //用户数据各项检测均正确,则将用户数据插入数据库
     $sql = "INSERT INTO User(Username,Password) VALUES ('" . $username . "', '" . md5($password) . "')";
     if ($mySQLi->query($sql)) {
-        $sqlnew="CREATE TABLE `".$username."` (`Wordid` int NOT NULL AUTO_INCREMENT,`Word` varchar(20) NOT NULL,`Type` varchar(10) NOT NULL,`Translation` varchar(50) NOT NULL,PRIMARY KEY(`Wordid`)) ENGINE=InnoDB DEFAULT CHARSET=gbk AUTO_INCREMENT=1";
+        $sqlnew="CREATE TABLE `".$username."` (`Wordid` int NOT NULL AUTO_INCREMENT,`Word` varchar(20) NOT NULL,`Type` varchar(10) NOT NULL,`Translation` varchar(50) NOT NULL,`Soundmark` varchar(50) NOT NULL,PRIMARY KEY(`Wordid`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1";
         if ($mySQLi->query($sqlnew)){
             $mySQLi->close();
             echo "注册成功！正在跳转到登录页……";
