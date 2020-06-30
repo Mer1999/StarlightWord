@@ -84,6 +84,7 @@
             text-indent: 8px;
             margin: 30px auto;
             border-radius: 10px;
+            cursor:pointer;
         }
 
         #form_showtranslation {
@@ -104,6 +105,10 @@
             text-indent: 8px;
             margin: 30px auto;
             border-radius: 10px;
+            cursor:pointer;
+        }
+        #btn_showtranslation:hover,#btn_before:hover, #btn_next:hover,#btn_insertnotebook:hover{
+            background-color: aliceblue;
         }
 
         #table_btn {
@@ -120,6 +125,9 @@
         .p_insertnotebook {
             text-align: center;
             font-size: 20px;
+        }
+        img{
+            cursor:pointer;
         }
     </style>
 

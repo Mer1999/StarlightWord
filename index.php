@@ -114,6 +114,16 @@
             text-indent: 8px;
             margin: 30px auto;
             border-radius: 10px;
+            cursor:pointer;
+        }
+        #btn_startlearn:hover{
+            background-color: aliceblue;
+        }
+        #btn_continue:hover{
+            background-color: aliceblue;
+        }
+        #btn_changebook:hover{
+            background-color: aliceblue;
         }
 
         #btn_continue {
