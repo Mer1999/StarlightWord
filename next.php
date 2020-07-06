@@ -11,9 +11,9 @@ if ($mySQLi->connect_errno) {
 }
 //设置字符集
 $mySQLi->set_charset('utf8');
-        $recentword++;
-        $sql = "UPDATE User SET Recentword='" . $recentword . "' WHERE Username='" . $username . "'";
-        $result = $mySQLi->query($sql);
-        $mySQLi->close();
-        header('Refresh:0; url=learn.php');
+$recentword++;
+$sql = "UPDATE User SET Recentword='" . $recentword . "' WHERE Username='" . $username . "'";
+$result = $mySQLi->query($sql);
+$mySQLi->close();
+header('Refresh:0; url=learn.php');
 ?>

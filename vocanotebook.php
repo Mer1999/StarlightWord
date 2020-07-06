@@ -6,17 +6,21 @@
     <title>Starlight单词-生词本</title>
     <style>
         html {
-            background-color: #F0F8FF;
+            background-color: #F5FFFA;
         }
         #div_top {
-            height: 50px;
+            height: 70px;
         }
-
+        #root{
+            background-color: #008B8B;
+        }
         #span_title {
             float: left;
             margin-left: 30px;
-            margin-top: 10px;
+            margin-top: 20px;
             font-size: 20px;
+            color:#F0F8FF;
+            font-weight: bold;
         }
 
         #span_index,
@@ -24,8 +28,10 @@
         #span_learn {
             float: right;
             margin-right: 30px;
-            margin-top: 10px;
-            font-size: 18px;
+            margin-top: 20px;
+            font-size: 20px;
+            color:#F0F8FF;
+            font-weight: bold;
         }
 
         table {
@@ -34,12 +40,12 @@
         }
 
         a:link {
-            color: #000000;
+            color: #F0F8FF;
             text-decoration: none
         }
 
         a:visited {
-            color: #000000;
+            color: #F0F8FF;
             text-decoration: none
         }
 
@@ -48,7 +54,7 @@
         }
 
         a:hover {
-            color: #ee2c2c;
+            color: #FF6347;
             text-decoration: none
         }
         #div_table{
@@ -60,6 +66,7 @@
 
 <body>
     <div id="div_root">
+        <div id="root">
         <div id="div_top">
             <span id="span_title">生词本&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前用户:
         <?php 
@@ -72,6 +79,7 @@
         </div>
 
         <hr />
+        </div>
         <?php
         //连接数据库
         session_start();

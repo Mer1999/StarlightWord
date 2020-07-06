@@ -5,23 +5,22 @@
     <meta charset="utf-8">
     <title>Starlight单词-登录</title>
     <style>
-        html {
-            background-color: #F0F8FF;
-        }
-
         fieldset {
             width: 450px;
-            background: #ffffff;
+            background: #F5FFFA;
             height: 300px;
-            margin: 200px auto;
             border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         h1 {
             color: #000000;
             text-align: center;
-            letter-spacing:10px;
-            text-indent:10px;
+            letter-spacing: 5px;
+            text-indent: 10px;
             display: block;
         }
 
@@ -42,6 +41,7 @@
             width: 250px;
             border: 1px solid #000000;
             height: 20px;
+            border-radius: 5px;
         }
 
         #password {
@@ -70,13 +70,14 @@
             width: 120px;
             margin: 40px 165px 0px 165px;
             font-size: 20px;
-            letter-spacing:8px;
-            text-indent:8px;
+            letter-spacing: 8px;
+            text-indent: 8px;
             background-color: #FFFFFF;
             border-radius: 10px;
-            cursor:pointer;
+            cursor: pointer;
         }
-        #sbutton:hover{
+
+        #sbutton:hover {
             background-color: aliceblue;
         }
 
@@ -84,13 +85,31 @@
             display: block;
             text-align: center;
         }
+
+        #div_bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-width: 1000px;
+            z-index: -10;
+            zoom: 1;
+            background-color: #fff;
+            background-repeat: no-repeat;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-position: center 0;
+        }
     </style>
 </head>
 
 <body>
-    <form action="login.php" name='login' method="post">
+    <div id="div_bg" style="background-image: url(./image/loginback.jpg);"></div>
+    <form action="login.php" name='login' method="POST">
         <fieldset>
-            <h1>登录</h1>
+            <h1>Starlight单词登录</h1>
             <label for="username" id='label_username'>用户名:</label>
             <input id="username" name="username" type="text" /><br />
             <label for="password" id='label_password'>密码:</label>
